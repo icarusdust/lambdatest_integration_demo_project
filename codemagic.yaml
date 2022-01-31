@@ -22,8 +22,6 @@ workflows:
               script: |
                 echo "sdk.dir=$ANDROID_SDK_ROOT" > "$FCI_BUILD_DIR/android/local.properties"
                 echo $ANDROID_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/android/app/google-services.json
-            - name: Testing
-              script: cd android && ./gradlew test
               test_report: android/app/build/test-results/**/*.xml
             - name: Set up keystore
               script: |
