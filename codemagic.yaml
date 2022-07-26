@@ -45,7 +45,7 @@ workflows:
                 cd android && ./gradlew assembleRelease
             - name: App upload and Set app id in environment variable.
               script: |
-                curl --location --request POST 'https://manual-api.lambdatest.com/app/upload/realDevice' --header 'Authorization: Basic $LAMBDATEST' --form 'name="lambda1"' --form 'appFile=@"android/app/build/outputs/apk/release/app-release.apk"'
+                curl --location --request POST 'https://manual-api.lambdatest.com/app/upload/realDevice' --header 'Authorization: Basic ${LAMBDATEST}' --form 'name="lambda1"' --form 'appFile=@"android/app/build/outputs/apk/release/app-release.apk"'
       
         artifacts:
             - android/app/build/outputs/**/*.apk
