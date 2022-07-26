@@ -13,7 +13,7 @@ workflows:
                 CM_KEYSTORE_PATH: /tmp/keystore.keystore
                 CM_KEY_ALIAS_USERNAME: Encrypted(Z0FBQUFBQmcwbDcweUxYUmxxaTVEeFhxY0hTQWVteUlTMWhiNzVpazlERUFNR1g5akMxLTA4NjVKaXJ2dEdVdDhDRVV5WlNqa25kTW1raDJuYlRiT2o2YW1qTmpMWDc4akE9PQ==) # <-- Put your encrypted keystore alias username here 
                 PACKAGE_NAME: "com.codemagic_react_native"
-                LAMBDATEST: 'bmloYWxuZXZlcmNvZGU6dFpBeTE3aXZzOUpsTFBEcWpCM24zc1p4WnEzSzFTelBtYUd3T0ZOZGRFRzlrZFllSnQ='
+#                 LAMBDATEST: 'bmloYWxuZXZlcmNvZGU6dFpBeTE3aXZzOUpsTFBEcWpCM24zc1p4WnEzSzFTelBtYUd3T0ZOZGRFRzlrZFllSnQ='
             node: 15.13.0
         scripts:
             - name: Install npm dependencies
@@ -45,7 +45,7 @@ workflows:
                 cd android && ./gradlew assembleRelease
             - name: App upload and Set app id in environment variable.
               script: |
-                curl --location --request POST 'https://manual-api.lambdatest.com/app/upload/realDevice' --header 'Authorization: Basic ${LAMBDATEST}' --form 'name="lambda1"' --form 'appFile=@"android/app/build/outputs/apk/release/app-release.apk"'
+                curl --location --request POST 'https://manual-api.lambdatest.com/app/upload/realDevice' --header 'Authorization: Basic bmloYWxuZXZlcmNvZGU6dFpBeTE3aXZzOUpsTFBEcWpCM24zc1p4WnEzSzFTelBtYUd3T0ZOZGRFRzlrZFllSnQ=' --form 'name="lambda1"' --form 'appFile=@"android/app/build/outputs/apk/release/app-release.apk"'
       
         artifacts:
             - android/app/build/outputs/**/*.apk
