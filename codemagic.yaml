@@ -16,6 +16,11 @@ workflows:
                 LAMBDATEST: 'bmloYWxuZXZlcmNvZGU6dFpBeTE3aXZzOUpsTFBEcWpCM24zc1p4WnEzSzFTelBtYUd3T0ZOZGRFRzlrZFllSnQ='
             node: 15.13.0
         scripts:
+            - name: DX
+              script: |
+                cd $ANDROID_HOME/build-tools/33.0.0
+                ln -s d8 dx
+                ln -s lib/d8.jar lib/dx.jar
             - name: Install npm dependencies
               script: |
                 npm install
