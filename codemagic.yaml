@@ -2,7 +2,7 @@ workflows:
      react-native-android:
         name: React Native Android
         max_build_duration: 60
-        instance_type: mac_mini_m1
+        instance_type: mac_pro
         environment:
 #             groups:
 #                 - firebase
@@ -48,9 +48,9 @@ workflows:
                 # export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks=alpha) + 1))             
                 # export NEW_BUILD_NUMBER=$(($(firebase-app-distribution get-latest-build-number --package-name "$PACKAGE_NAME") + 1))
                 cd android && ./gradlew assembleRelease
-            - name: App upload and Set app id in environment variable.
-              script: |
-                curl --location --request POST "https://manual-api.lambdatest.com/app/upload/realDevice" --header "Authorization: Basic $LAMBDATEST " --form "name='lambda1'" --form "appFile=@android/app/build/outputs/apk/release/app-release.apk"
+#             - name: App upload and Set app id in environment variable.
+#               script: |
+#                 curl --location --request POST "https://manual-api.lambdatest.com/app/upload/realDevice" --header "Authorization: Basic $LAMBDATEST " --form "name='lambda1'" --form "appFile=@android/app/build/outputs/apk/release/app-release.apk"
       
         artifacts:
             - android/app/build/outputs/**/*.apk
