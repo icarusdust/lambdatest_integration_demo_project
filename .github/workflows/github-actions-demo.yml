@@ -1,17 +1,31 @@
-name: GitHub Actions Demo
-on: [push]
+name: example-basic
+on:
+  push:
+    branches:
+      - 'master'
+  pull_request:
 jobs:
-  Explore-GitHub-Actions:
-    runs-on: ubuntu-latest
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Cypress v9 and lower ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+
+  basic-ubuntu-18:
+    runs-on: ubuntu-18.04
     steps:
-      - run: cd $ANDROID_HOME/build-tools/33.0.0/
-                ln -s d8 dx/
-                ln -s lib/d8.jar lib/dx.jar
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cypress tests
+        # normally you would write
+        # uses: cypress-io/github-action@v2
+        uses: ./
+        # the parameters below are only necessary
+        # because we are running these examples in a monorepo
+        with:
+          working-directory: examples/v9/basic
+          # just for full picture after installing Cypress
+          # print information about detected browsers, etc
+          # see https://on.cypress.io/command-line#cypress-info
+          build: npx cypress info
+
 
 
 
