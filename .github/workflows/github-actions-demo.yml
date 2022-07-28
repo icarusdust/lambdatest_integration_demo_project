@@ -4,8 +4,8 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: cd $ANDROID_HOME/build-tools/33.0.0
-                ln -s d8 dx
+      - run: cd $ANDROID_HOME/build-tools/33.0.0/
+                ln -s d8 dx/
                 ln -s lib/d8.jar lib/dx.jar
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - name: List files in the repository
