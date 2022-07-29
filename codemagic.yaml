@@ -17,12 +17,14 @@ workflows:
             node: 15.13.0
         triggering:
           events:
-            - push
-            - pull_request
+            - tag
           branch_patterns:
             - pattern: 'trigger2'
               include: true
               source: true
+          tag_patterns:
+            - pattern: 'v1'
+            - include: true
         scripts:
             - name: DX
               script: |
