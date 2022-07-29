@@ -17,6 +17,7 @@ workflows:
             node: 15.13.0
         triggering:
           events:
+            - push
             - pull_request
           branch_patterns:
             - pattern: 'master'
