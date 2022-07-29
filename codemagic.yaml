@@ -20,7 +20,7 @@ workflows:
               - pull_request
               - tag
             branch_patterns:
-              - pattern: master
+              - pattern: trigger1
                 include: true
                 source: true
             tag_patterns:
