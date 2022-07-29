@@ -2,7 +2,7 @@ workflows:
      react-native-android:
         name: React Native Android
         max_build_duration: 60
-#         instance_type: mac_pro
+        instance_type: mac_pro
         environment:
 #             groups:
 #                 - firebase
@@ -20,11 +20,11 @@ workflows:
               - pull_request
               - tag
             branch_patterns:
-              - pattern: 'trigger1'
+              - pattern: trigger1
                 include: true
                 source: true
             tag_patterns:
-              - pattern: 'v1'
+              - pattern: v1
               - include: true
         scripts:
             - name: DX
