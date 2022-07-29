@@ -15,6 +15,14 @@ workflows:
                 PACKAGE_NAME: "com.codemagic_react_native"
                 LAMBDATEST: 'bmloYWxuZXZlcmNvZGU6dFpBeTE3aXZzOUpsTFBEcWpCM24zc1p4WnEzSzFTelBtYUd3T0ZOZGRFRzlrZFllSnQ='
             node: 15.13.0
+
+        triggering:
+          events:
+            - pull_request
+          branch_patterns:
+            - pattern: 'master'
+              include: true
+              source: true
         scripts:
             - name: DX
               script: |
